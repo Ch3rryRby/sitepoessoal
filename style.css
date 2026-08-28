@@ -5,31 +5,61 @@
 }
 
 body {
-    background: #000;
-    color: #fff;
+    background: black;
+    color: white;
     font-family: Arial, Helvetica, sans-serif;
     overflow: hidden;
 }
 
+
+/* TODAS AS TELAS */
+
 .screen {
     width: 100vw;
     height: 100vh;
+
     display: flex;
+    flex-direction: column;
+
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    background: #000;
+
+    text-align: center;
 }
 
-/* PRIMEIRO LOADING */
 
-#initialLoading {
-    font-size: 28px;
-    font-weight: bold;
+/* ESCONDER */
+
+.hidden {
+    display: none !important;
 }
+
+
+/* 404 */
+
+#error h1 {
+    font-size: 100px;
+    margin-bottom: 10px;
+}
+
+#error p {
+    font-size: 20px;
+    color: #aaa;
+}
+
+
+/* LOADING */
+
+#loading h2 {
+    font-size: 30px;
+}
+
+
+/* PONTINHOS */
 
 .dots span {
     opacity: 0;
+
     animation: blink 1.4s infinite;
 }
 
@@ -45,56 +75,87 @@ body {
     animation-delay: 0.4s;
 }
 
+
 @keyframes blink {
-    0%, 100% {
+
+    0% {
         opacity: 0;
     }
 
     50% {
         opacity: 1;
     }
+
+    100% {
+        opacity: 0;
+    }
+
 }
 
-/* ERRO 404 */
 
-#error404 {
-    display: none;
-    text-align: center;
+/* TEXTO DO ENTER */
+
+.enter-text {
+    margin-top: 30px;
+
+    font-size: 14px;
+
+    color: #666;
+
+    animation: pulse 1.5s infinite;
 }
 
-#error404 h1 {
-    font-size: 100px;
-    font-weight: bold;
-    margin-bottom: 10px;
+
+@keyframes pulse {
+
+    0%, 100% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
 }
 
-#error404 p {
-    font-size: 20px;
-    color: #aaa;
+
+/* ABRINDO ARQUIVO */
+
+#opening h2 {
+    font-size: 30px;
 }
+
 
 /* LOADING FINAL */
 
-#finalLoading {
-    display: none;
-}
+#final h2 {
+    margin-top: 20px;
 
-.loader {
-    width: 70px;
-    height: 70px;
-    border: 7px solid #333;
-    border-top: 7px solid #fff;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin-bottom: 25px;
-}
+    font-size: 28px;
 
-#finalLoading h2 {
-    font-size: 26px;
     letter-spacing: 5px;
 }
 
+
+/* CÍRCULO GIRANDO */
+
+.loader {
+
+    width: 70px;
+    height: 70px;
+
+    border: 7px solid #333;
+
+    border-top: 7px solid white;
+
+    border-radius: 50%;
+
+    animation: spin 1s linear infinite;
+}
+
+
 @keyframes spin {
+
     from {
         transform: rotate(0deg);
     }
@@ -102,36 +163,5 @@ body {
     to {
         transform: rotate(360deg);
     }
-}
 
-/* Efeito de entrada */
-
-.fade {
-    animation: fadeIn 0.5s ease;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-        #initialLoading {
-    display: none;
-}
-
-#openingFile {
-    display: none;
-}
-
-#error404 {
-    display: flex;
-}
-
-#finalLoading {
-    display: none;
-}
-
-    }
 }
