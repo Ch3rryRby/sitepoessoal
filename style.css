@@ -1,104 +1,121 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-
-    background:linear-gradient(135deg,#ff4d6d,#6a5acd);
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    height:100vh;
-
+body {
+    background: #000;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden;
 }
 
-.container{
-
-    width:420px;
-
-    background:white;
-
-    padding:40px;
-
-    border-radius:20px;
-
-    text-align:center;
-
-    box-shadow:0 10px 30px rgba(0,0,0,.3);
-
+.screen {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #000;
 }
 
-img{
+/* PRIMEIRO LOADING */
 
-    width:150px;
-
-    height:150px;
-
-    border-radius:50%;
-
-    margin-bottom:20px;
-
+#initialLoading {
+    font-size: 28px;
+    font-weight: bold;
 }
 
-h1{
-
-    color:#333;
-
-    margin-bottom:15px;
-
+.dots span {
+    opacity: 0;
+    animation: blink 1.4s infinite;
 }
 
-p{
-
-    color:#666;
-
-    margin-bottom:15px;
-
+.dots span:nth-child(1) {
+    animation-delay: 0s;
 }
 
-.botoes{
-
-    display:flex;
-
-    gap:15px;
-
-    justify-content:center;
-
-    margin-top:20px;
-
+.dots span:nth-child(2) {
+    animation-delay: 0.2s;
 }
 
-button{
-
-    padding:12px 20px;
-
-    border:none;
-
-    border-radius:10px;
-
-    background:#ff4d6d;
-
-    color:white;
-
-    font-size:16px;
-
-    cursor:pointer;
-
-    transition:.3s;
-
+.dots span:nth-child(3) {
+    animation-delay: 0.4s;
 }
 
-button:hover{
+@keyframes blink {
+    0%, 100% {
+        opacity: 0;
+    }
 
-    background:#6a5acd;
+    50% {
+        opacity: 1;
+    }
+}
 
-    transform:scale(1.05);
+/* ERRO 404 */
 
+#error404 {
+    display: none;
+    text-align: center;
+}
+
+#error404 h1 {
+    font-size: 100px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#error404 p {
+    font-size: 20px;
+    color: #aaa;
+}
+
+/* LOADING FINAL */
+
+#finalLoading {
+    display: none;
+}
+
+.loader {
+    width: 70px;
+    height: 70px;
+    border: 7px solid #333;
+    border-top: 7px solid #fff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 25px;
+}
+
+#finalLoading h2 {
+    font-size: 26px;
+    letter-spacing: 5px;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Efeito de entrada */
+
+.fade {
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
