@@ -117,5 +117,21 @@ body {
 
     to {
         opacity: 1;
+        #initialLoading {
+    display: none;
+}
+
+#openingFile {
+    display: none;
+}
+
+#error404 {
+    display: flex;
+}
+
+#finalLoading {
+    display: none;
+}
+
     }
 }
