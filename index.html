@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,88 +11,102 @@
 
 <body>
 
-    <!-- 1. ARQUIVO NÃO ENCONTRADO -->
-    <div id="error404" class="screen">
+    <!-- 404 -->
+    <div id="error" class="screen">
         <h1>404</h1>
         <p>Arquivo não encontrado</p>
     </div>
 
-    <!-- 2. LOADING COM 3 PONTOS -->
-    <div id="initialLoading" class="screen">
-        <div>
+
+    <!-- LOADING -->
+    <div id="loading" class="screen hidden">
+        <h2>
             Loading
             <span class="dots">
                 <span>.</span>
                 <span>.</span>
                 <span>.</span>
             </span>
-        </div>
+        </h2>
+
+        <p class="enter-text">Pressione ENTER para continuar</p>
     </div>
 
-    <!-- 3. ABRINDO ARQUIVO -->
-    <div id="openingFile" class="screen">
-        <div>
+
+    <!-- ABRINDO ARQUIVO -->
+    <div id="opening" class="screen hidden">
+        <h2>
             Abrindo arquivo
             <span class="dots">
                 <span>.</span>
                 <span>.</span>
                 <span>.</span>
             </span>
-        </div>
+        </h2>
     </div>
 
-    <!-- 4. LOADING FINAL GIRANDO -->
-    <div id="finalLoading" class="screen">
+
+    <!-- LOADING FINAL -->
+    <div id="final" class="screen hidden">
+
         <div class="loader"></div>
+
         <h2>LOADING</h2>
+
     </div>
 
 
     <script>
 
-        const error404 = document.getElementById("error404");
-        const initialLoading = document.getElementById("initialLoading");
-        const openingFile = document.getElementById("openingFile");
-        const finalLoading = document.getElementById("finalLoading");
+        const error = document.getElementById("error");
+        const loading = document.getElementById("loading");
+        const opening = document.getElementById("opening");
+        const final = document.getElementById("final");
 
 
-        // Começa mostrando o 404
-        error404.style.display = "flex";
-
-
-        // Depois de 3 segundos → Loading...
+        // Depois de 3 segundos, sai do 404
+        // e mostra o Loading
         setTimeout(() => {
 
-            error404.style.display = "none";
-
-            initialLoading.style.display = "flex";
-            initialLoading.classList.add("fade");
+            error.classList.add("hidden");
+            loading.classList.remove("hidden");
 
         }, 3000);
 
 
-        // Depois de 3 segundos → Abrindo arquivo...
-        setTimeout(() => {
+        // Detecta a tecla ENTER
+        document.addEventListener("keydown", function(event) {
 
-            initialLoading.style.display = "none";
+            if (event.key === "Enter") {
 
-            openingFile.style.display = "flex";
-            openingFile.classList.add("fade");
+                // Só funciona quando estiver no Loading
+                if (!loading.classList.contains("hidden")) {
 
-        }, 6000);
+                    // Esconde Loading
+                    loading.classList.add("hidden");
+
+                    // Mostra "Abrindo arquivo"
+                    opening.classList.remove("hidden");
 
 
-        // Depois de 3 segundos → Loading girando
-        setTimeout(() => {
+                    // Depois de 3 segundos,
+                    // mostra o Loading final
+                    setTimeout(() => {
 
-            openingFile.style.display = "none";
+                        opening.classList.add("hidden");
 
-            finalLoading.style.display = "flex";
-            finalLoading.classList.add("fade");
+                        final.classList.remove("hidden");
 
-        }, 9000);
+                    }, 3000);
+
+                }
+
+            }
+
+        });
 
     </script>
 
 </body>
+
 </html>
