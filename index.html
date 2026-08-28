@@ -3,39 +3,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Portfólio</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Loading</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000;
+            color: #fff;
+            font-family: Arial, Helvetica, sans-serif;
+            overflow: hidden;
+        }
+
+        .screen {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background: #000;
+        }
+
+        /* -------------------------
+           PRIMEIRO LOADING
+        ------------------------- */
+
+        #initialLoading {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .dots span {
+            opacity: 0;
+            animation: blink 1.4s infinite;
+        }
+
+        .dots span:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .dots span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .dots span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* -------------------------
+           ERRO 404
+        ------------------------- */
+
+        #error404 {
+            display: none;
+            text-align: center;
+        }
+
+        #error404 h1 {
+            font-size: 100px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        #error404 p {
+            font-size: 20px;
+            color: #aaa;
+        }
+
+        /* -------------------------
+           SEGUNDO LOADING
+        ------------------------- */
+
+        #finalLoading {
+            display: none;
+        }
+
+        .loader {
+            width: 70px;
+            height: 70px;
+            border: 7px solid #333;
+            border-top: 7px solid #fff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 25px;
+        }
+
+        #finalLoading h2 {
+            font-size: 26px;
+            letter-spacing: 5px;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Pequeno efeito de entrada */
+        .fade {
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-<div class="container">
-
-    <img src="https://via.placeholder.com/150" alt="Minha Foto">
-
-    <h1>Olá! Eu sou Ch3rryRby 🍒</h1>
-
-    <p>
-        Bem-vindo ao meu site!
-    </p>
-
-    <p>
-        Sou estudante e estou aprendendo HTML, CSS e JavaScript.
-        Gosto de tecnologia, programação e criar projetos para melhorar minhas habilidades.
-    </p>
-
-    <div class="botoes">
-
-        <a href="https://github.com/Ch3rryRby" target="_blank">
-            <button>Meu GitHub</button>
-        </a>
-
-        <a href="https://www.instagram.com/ch3rry.rby/" target="_blank">
-            <button>Meu Instagram</button>
-        </a>
-
+    <!-- PRIMEIRA TELA -->
+    <div id="initialLoading" class="screen">
+        <div>
+            Loading
+            <span class="dots">
+                <span>.</span>
+                <span>.</span>
+                <span>.</span>
+            </span>
+        </div>
     </div>
 
-</div>
+
+    <!-- ERRO 404 -->
+    <div id="error404" class="screen">
+        <h1>404</h1>
+        <p>Page Not Found</p>
+    </div>
+
+
+    <!-- LOADING FINAL -->
+    <div id="finalLoading" class="screen">
+        <div class="loader"></div>
+        <h2>LOADING</h2>
+    </div>
+
+
+    <script>
+        const initialLoading = document.getElementById("initialLoading");
+        const error404 = document.getElementById("error404");
+        const finalLoading = document.getElementById("finalLoading");
+
+        // 1. Fica no primeiro Loading durante 3 segundos
+        setTimeout(() => {
+
+            // Esconde o primeiro Loading
+            initialLoading.style.display = "none";
+
+            // Mostra o 404
+            error404.style.display = "flex";
+            error404.classList.add("fade");
+
+        }, 3000);
+
+
+        // 2. Depois de 2 segundos com o 404,
+        // apaga a tela e mostra o Loading final
+        setTimeout(() => {
+
+            error404.style.display = "none";
+
+            finalLoading.style.display = "flex";
+            finalLoading.classList.add("fade");
+
+        }, 5000);
+    </script>
 
 </body>
 </html>
